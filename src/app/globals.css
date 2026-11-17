@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-primary: #D93A3A;
+    --brand-dark: #B71C1C;
+    --charcoal: #111111;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-white text-neutral-900 antialiased selection:bg-brand-500 selection:text-white transition-colors duration-200;
+  }
+
+  .dark body {
+    @apply bg-charcoal text-neutral-100;
+  }
+}
+
+/* Origami Geometric Accents */
+.origami-angled-top {
+  clip-path: polygon(0 0, 100% 3vw, 100% 100%, 0 100%);
+}
+
+.origami-angled-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3vw), 0 100%);
+}
+
+.origami-facet-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.origami-facet-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 28px 28px 0;
+  border-color: transparent #D93A3A transparent transparent;
+  opacity: 0.85;
+  transition: all 0.2s ease-in-out;
+}
+
+.origami-facet-card:hover::before {
+  border-width: 0 36px 36px 0;
+}

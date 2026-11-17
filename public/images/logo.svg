@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" class="w-full h-full">
+  <!-- Facet 1: Top horizontal bar fold -->
+  <polygon points="26,25 58,25 42,41" fill="#E54A46" />
+  <!-- Facet 2: Left upper spine triangle -->
+  <polygon points="26,25 42,41 26,41" fill="#AE3033" />
+  <!-- Facet 3: Upper loop top-right angle fold -->
+  <polygon points="58,25 74,41 58,41" fill="#D65152" />
+  <!-- Facet 4: Upper loop bottom-right shadow facet -->
+  <polygon points="58,41 74,41 58,57" fill="#A13F40" />
+  <!-- Facet 5: Left middle spine block -->
+  <polygon points="26,41 42,41 42,57" fill="#B53237" />
+  <!-- Facet 6: Left lower spine diagonal fold (points down to left tip) -->
+  <polygon points="26,41 42,57 26,75" fill="#E14843" />
+  <!-- Facet 7: Right leg upper diagonal facet -->
+  <polygon points="42,57 58,57 58,75" fill="#A72F38" />
+  <!-- Facet 8: Right leg lower diagonal fold (points down to right tip) -->
+  <polygon points="58,57 74,75 58,75" fill="#DB5353" />
+</svg>
