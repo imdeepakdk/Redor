@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
 
     // 4. Save to Supabase
     const supabase = createServerClient();
-    const { data: inserted, error: dbError } = await supabase
+    const { error: dbError } = await supabase
       .from("bookings")
       .insert({
         full_name: data.full_name,
@@ -80,9 +80,7 @@ export async function POST(req: NextRequest) {
         utm_term: data.utm_term || null,
         utm_content: data.utm_content || null,
         status: "New",
-      })
-      .select("id")
-      .single();
+      });
 
     if (dbError) {
       console.error("Supabase booking insert error:", dbError);
