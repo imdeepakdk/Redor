@@ -1,7 +1,9 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://redor.in";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://redor-imdeepakdks-projects.vercel.app";
 
   return {
     rules: {

@@ -2,7 +2,9 @@ import { MetadataRoute } from "next";
 import { createServerClient } from "@/lib/supabase/server";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://redor.in";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://redor-imdeepakdks-projects.vercel.app";
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

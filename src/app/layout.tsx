@@ -23,28 +23,44 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://redor.in";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://redor-imdeepakdks-projects.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "REDOR | Digital Marketing & Web Engineering Studio in Greater Noida",
+    default: "REDOR | Digital Marketing & Web Development Agency in Greater Noida",
     template: "%s | REDOR Greater Noida",
   },
   description:
-    "REDOR helps ambitious local businesses in Greater Noida, Noida & Ghaziabad get more customers online with high-speed Next.js websites, Google Business Profile ranking, video reels & branding.",
+    "REDOR is a premier digital marketing & modern web development agency based in Greater Noida, UP. Founded by Deepak Kumar, helping local businesses dominate Google and get more customers online.",
   keywords: [
+    "REDOR",
+    "REDOR Agency",
+    "REDOR Greater Noida",
+    "REDOR digital marketing",
     "Digital Marketing Agency Greater Noida",
     "Website Development Greater Noida",
     "Google Business Profile Optimization Noida",
     "Video Editing for Reels Greater Noida",
-    "Local SEO Pari Chowk",
-    "Deepak Kumar Web Developer",
-    "REDOR digital agency",
+    "Deepak Kumar REDOR",
+    "Web Developer Greater Noida",
   ],
   authors: [{ name: "Deepak Kumar" }],
   creator: "Deepak Kumar",
   publisher: "REDOR",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
