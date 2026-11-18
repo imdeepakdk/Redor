@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REDOR Ad Banner Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .controls {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .btn {
+      background: #E53935;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(229, 57, 53, 0.4);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn:hover {
+      background: #c62828;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(229, 57, 53, 0.6);
+    }
+    .canvas-wrapper {
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 100%;
+      width: 540px;
+      height: 540px;
+    }
+    @media (min-width: 800px) {
+      .canvas-wrapper {
+        width: 600px;
+        height: 600px;
+      }
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .instructions {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <button id="downloadBtn" class="btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      Download High-Res Banner (1080x1080 PNG)
+    </button>
+  </div>
+
+  <div class="canvas-wrapper">
+    <canvas id="bannerCanvas" width="1080" height="1080"></canvas>
+  </div>
+
+  <p class="instructions">
+    Use this banner on Instagram, Facebook Feed, WhatsApp Status, and Meta Ads to get your first local clients in Greater Noida & NCR!
+  </p>
+
+  <script>
+    const canvas = document.getElementById('bannerCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Wait for fonts to load before drawing
+    document.fonts.ready.then(() => {
+      drawBanner();
+    });
+
+    function drawBanner() {
+      // 1. Background (Rich Charcoal with geometric warmth)
+      ctx.fillStyle = '#0F0F12';
+      ctx.fillRect(0, 0, 1080, 1080);
+
+      // Radial dark red glow behind the logo area
+      const glow = ctx.createRadialGradient(860, 320, 50, 860, 320, 500);
+      glow.addColorStop(0, 'rgba(217, 58, 58, 0.28)');
+      glow.addColorStop(0.5, 'rgba(183, 28, 28, 0.12)');
+      glow.addColorStop(1, 'rgba(15, 15, 18, 0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, 1080, 1080);
+
+      // Subtle diagonal geometric grid lines in top-right
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      ctx.lineWidth = 1;
+      for (let i = -500; i < 1500; i += 70) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i + 1080, 1080);
+        ctx.stroke();
+      }
+
+      // 2. Top Header Bar
+      // Logo Mark
+      drawOrigamiR(ctx, 80, 75, 0.85);
+
+      // Brand Wordmark
+      ctx.font = '900 36px "Space Grotesk", sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('REDOR', 160, 115);
+
+      ctx.font = '800 12px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#E53935';
+      ctx.letterSpacing = '3px';
+      ctx.fillText('GREATER NOIDA • NCR', 160, 135);
+
+      // Top Right Location Pill
+      drawPill(ctx, 770, 80, 230, 48, 'rgba(255, 255, 255, 0.06)', 'rgba(255, 255, 255, 0.12)');
+      ctx.font = '700 14px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#E0E0E0';
+      ctx.fillText('📍 Greater Noida Agency', 805, 110);
+
+      // 3. Launch Offer Ribbon
+      drawPill(ctx, 80, 190, 410, 44, 'rgba(229, 57, 53, 0.16)', 'rgba(229, 57, 53, 0.45)');
+      ctx.font = '800 13px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#FF5252';
+      ctx.fillText('🔥 LAUNCH OFFER: SPECIAL RATE FOR FIRST 10 CLIENTS', 105, 217);
+
+      // 4. Main Headline
+      ctx.font = '900 62px "Space Grotesk", sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('Help Your Local Business', 80, 310);
+      
+      // Accent line with gradient
+      const textGrad = ctx.createLinearGradient(80, 320, 750, 320);
+      textGrad.addColorStop(0, '#FF4B4B');
+      textGrad.addColorStop(1, '#FF8A80');
+      ctx.fillStyle = textGrad;
+      ctx.fillText('Get More Real Customers', 80, 385);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('Online in Greater Noida.', 80, 460);
+
+      // Subheadline
+      ctx.font = '500 20px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#A1A1AA';
+      ctx.fillText('We build bullet-speed Next.js websites, viral Instagram reels, and top Google rankings.', 80, 520);
+      ctx.fillText('No middlemen. Direct deliverables. 100% honest local support.', 80, 550);
+
+      // 5. Giant 3D Origami R in the right background
+      drawOrigamiR(ctx, 690, 330, 3.8);
+
+      // 6. Service Feature Cards
+      const services = [
+        { icon: '⚡', title: 'Bullet-Speed Website', desc: 'Custom Next.js • Under 1.5s load' },
+        { icon: '🎥', title: 'Viral Reels & Video', desc: 'Short-form content that converts' },
+        { icon: '📍', title: 'Google Profile Ranking', desc: 'Top 3 local search map ranking' }
+      ];
+
+      services.forEach((s, idx) => {
+        const y = 615 + (idx * 92);
+        // Card background
+        drawRoundedRect(ctx, 80, y, 540, 76, 16, 'rgba(25, 25, 30, 0.85)', 'rgba(255, 255, 255, 0.08)');
+        
+        // Icon
+        ctx.font = '28px sans-serif';
+        ctx.fillText(s.icon, 105, y + 48);
+
+        // Title & Desc
+        ctx.font = '800 18px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(s.title, 155, y + 36);
+
+        ctx.font = '500 14px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = '#9CA3AF';
+        ctx.fillText(s.desc, 155, y + 58);
+      });
+
+      // 7. Target Audience Bar
+      drawRoundedRect(ctx, 80, 910, 920, 48, 12, 'rgba(255, 255, 255, 0.04)', 'rgba(255, 255, 255, 0.08)');
+      ctx.font = '700 13px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#94A3B8';
+      ctx.fillText('IDEAL FOR:  Gyms • Salons & Spas • Clinics • Cafes & Restaurants • Real Estate • Coaching Institutes', 120, 940);
+
+      // 8. Bottom CTA Banner
+      drawRoundedRect(ctx, 80, 976, 920, 74, 20, '#E53935', 'transparent');
+
+      // WhatsApp icon & text
+      ctx.font = '900 24px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('💬 Book a Free Consultation on WhatsApp:', 120, 1022);
+
+      ctx.font = '900 26px "Space Grotesk", sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('6200132385', 680, 1023);
+
+      // Small URL
+      ctx.font = '700 14px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+      ctx.fillText('Founder: Deepak Kumar • redoragency3@gmail.com', 480, 75);
+    }
+
+    // Helper functions
+    function drawRoundedRect(ctx, x, y, width, height, radius, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fill && fill !== 'transparent') {
+        ctx.fillStyle = fill;
+        ctx.fill();
+      }
+      if (stroke && stroke !== 'transparent') {
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+
+    function drawPill(ctx, x, y, width, height, fill, stroke) {
+      drawRoundedRect(ctx, x, y, width, height, height / 2, fill, stroke);
+    }
+
+    // Draw the exact origami faceted R logo
+    function drawOrigamiR(ctx, originX, originY, scale = 1) {
+      ctx.save();
+      ctx.translate(originX, originY);
+      ctx.scale(scale, scale);
+
+      const facets = [
+        { pts: [[26, 25], [58, 25], [42, 41]], fill: '#E54A46' },
+        { pts: [[26, 25], [42, 41], [26, 41]], fill: '#AE3033' },
+        { pts: [[58, 25], [74, 41], [58, 41]], fill: '#D65152' },
+        { pts: [[58, 41], [74, 41], [58, 57]], fill: '#A13F40' },
+        { pts: [[26, 41], [42, 41], [42, 57]], fill: '#B53237' },
+        { pts: [[26, 41], [42, 57], [26, 75]], fill: '#E14843' },
+        { pts: [[42, 57], [58, 57], [58, 75]], fill: '#A72F38' },
+        { pts: [[58, 57], [74, 75], [58, 75]], fill: '#DB5353' }
+      ];
+
+      facets.forEach(f => {
+        ctx.beginPath();
+        ctx.moveTo(f.pts[0][0] - 26, f.pts[0][1] - 25);
+        ctx.lineTo(f.pts[1][0] - 26, f.pts[1][1] - 25);
+        ctx.lineTo(f.pts[2][0] - 26, f.pts[2][1] - 25);
+        ctx.closePath();
+        ctx.fillStyle = f.fill;
+        ctx.fill();
+      });
+
+      ctx.restore();
+    }
+
+    // Download Button
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = 'REDOR-Greater-Noida-Ad-Banner.png';
+      link.href = canvas.toDataURL('image/png', 1.0);
+      link.click();
+    });
+  </script>
+</body>
+</html>
